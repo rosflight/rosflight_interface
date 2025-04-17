@@ -100,18 +100,18 @@ typedef struct //__attribute__((packed))
   float temperature;   // K
 } MagStruct;
 
-enum class GNSSFixType // quality from GGA
-{
-  GNSS_FIX_TYPE_NO_FIX = 0,
-  GNSS_FIX_TYPE_DEAD_RECKONING_ONLY = 1,
-  GNSS_FIX_TYPE_2D_FIX = 2,
-  GNSS_FIX_TYPE_3D_FIX = 3,
-  GNSS_FIX_TYPE_GNSS_PLUS_DEAD_RECKONING = 4,
-  GNSS_FIX_TYPE_TIME_FIX_ONLY = 5,
-  GNSS_FIX_RTK_FLOAT = 6,
-  GNSS_FIX_RTK_FIXED = 7,
-  END = 8
-};
+//enum class GNSSFixType // quality from GGA
+//{
+//  GNSS_FIX_TYPE_NO_FIX = 0,
+//  GNSS_FIX_TYPE_DEAD_RECKONING_ONLY = 1,
+//  GNSS_FIX_TYPE_2D_FIX = 2,
+//  GNSS_FIX_TYPE_3D_FIX = 3,
+//  GNSS_FIX_TYPE_GNSS_PLUS_DEAD_RECKONING = 4,
+//  GNSS_FIX_TYPE_TIME_FIX_ONLY = 5,
+//  GNSS_FIX_RTK_FLOAT = 6,
+//  GNSS_FIX_RTK_FIXED = 7,
+//  END = 8
+//};
 
 // typedef struct //__attribute__((__packed__))
 // {
@@ -160,6 +160,15 @@ enum class GNSSFixType // quality from GGA
 //   } ecef;
 // } GnssStruct;
 
+enum GNSSFixType
+{
+  GNSS_FIX_TYPE_NO_FIX = 0,
+  GNSS_FIX_TYPE_DEAD_RECKONING_ONLY = 1,
+  GNSS_FIX_TYPE_2D_FIX = 2,
+  GNSS_FIX_TYPE_3D_FIX = 3,
+  GNSS_FIX_TYPE_GNSS_PLUS_DEAD_RECKONING = 4,
+  GNSS_FIX_TYPE_TIME_FIX_ONLY = 5,
+};
 
 struct GNSSData
 {
@@ -192,7 +201,7 @@ struct GNSSData
 
   uint64_t rosflight_timestamp; // microseconds, time stamp of last byte in the message
 
-  GNSSData() { memset(this, 0, sizeof(GNSSData)); }
+//  GNSSData() { memset(this, 0, sizeof(GNSSData)); }
 };
 
 struct GNSSFull
@@ -225,20 +234,20 @@ struct GNSSFull
   uint16_t p_dop;
   uint64_t rosflight_timestamp; // microseconds, time stamp of last byte in the message
 
-  GNSSFull() { memset(this, 0, sizeof(GNSSFull)); }
+//  GNSSFull() { memset(this, 0, sizeof(GNSSFull)); }
 };
 
-typedef struct
-{
-  bool imu;
-  bool gnss;
-  bool gnss_full;
-  bool baro;
-  bool mag;
-  bool diff_pressure;
-  bool sonar;
-  bool battery;
-} got_flags;
+//typedef struct
+//{
+//  bool imu;
+//  bool gnss;
+//  bool gnss_full;
+//  bool baro;
+//  bool mag;
+//  bool diff_pressure;
+//  bool sonar;
+//  bool battery;
+//} got_flags;
 
 // 16 analog + 8 digital MUST BE > 14 (Mavlink message size is hardware to 14)
 #define RC_STRUCT_CHANNELS 24
